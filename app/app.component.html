@@ -1,0 +1,32 @@
+<div id="nav-bar">
+  <div id="nav-bar-content">
+
+      <div id="nav-bar-left">
+          <div
+               style="font-size: 1.5em;"
+               class="nav-bar-items">
+                  AN Social
+          </div>
+      </div>
+
+      <div id="nav-bar-right">
+          <div *ngIf="!loggedIn()" class="nav-bar-items" (click)="LogIn()">Login</div>
+          <div *ngIf="loggedIn()" class="nav-bar-items" routerLink="userPosts">Home</div>
+          <div *ngIf="loggedIn()" class="nav-bar-items" routerLink="userprofile">profile</div>
+          <div *ngIf="loggedIn()" class="nav-bar-items" routerLink="postfeed">posts </div>
+          <div *ngIf="loggedIn() " class="nav-bar-items-logged" >
+            Hello, {{getUserName()}} </div>
+
+          <div *ngIf="loggedIn() " (click)="onLogoutClick()" class="nav-bar-items" >
+             Logout
+             <!-- &&auth.getAuth().currentUser?.emailVerified -->
+       </div>
+      </div>
+
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
+
+<app-profile [show]="loggedIn() && !userHasProfile"> </app-profile>

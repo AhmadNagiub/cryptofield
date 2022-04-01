@@ -1,0 +1,38 @@
+<div id="authenticator">
+  <mat-card id="authenticator-content">
+      <mat-card-header>
+        <mat-card-title>{{getStateText()}}</mat-card-title>
+    </mat-card-header>
+    <div *ngIf="isLoginState()">
+        <input #loginEmail placeholder="Email"/>
+        <input #loginPass placeholder="Password" type="password">
+        <button (click)="login(loginEmail , loginPass)" mat-flat-button color="warn">Login</button>
+    </div>
+    <div *ngIf="isRegisterState()">
+      <input #registerEmail placeholder="Email"/>
+      <input #registerPass placeholder="Password" type="password">
+      <input #registerConfirmPass placeholder="Confirm Password" type="password">
+      <button (click)="register(registerEmail ,registerPass ,registerConfirmPass )"mat-flat-button color="warn">Register</button>
+    </div>
+    <div *ngIf="isForgotPasswordState()">
+    <input #resetEmail placeholder="Email"/>
+    <button (click)="reset(resetEmail)" mat-flat-button color="warn">Reset</button>
+    </div>
+    <div class="login-other" *ngIf="isLoginWithState()">
+      <p>Login with social media<p>
+        <button (click)="signInWithFB()" class="facebook">Facebook</button>
+        <button class="linkedin">linkedIn</button>
+        <button (click)="signInWithGoogle()" class="google">Google +</button>
+    </div>
+    <mat-card-actions align="end">
+      <button mat-flat-button
+           (click)="onForgotPasswordClick()">Forgot Password</button>
+      <button mat-flat-button
+           (click)="onCreateAccountClick()">Create an Account</button>
+      <button mat-flat-button
+           (click)="onLoginClick()">Login</button>
+      <button mat-flat-button
+           (click)="onLoginWithClick()">Login With</button>
+  </mat-card-actions>
+  </mat-card>
+</div>
